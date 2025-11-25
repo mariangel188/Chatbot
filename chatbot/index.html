@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTPL - Universidad Técnica Particular de Loja</title>
+    
+    <!-- Importar fuente Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #003D6D 0%, #00537A 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 40px;
+            background: transparent;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon::before {
+            display: none;
+        }
+
+        .logo-icon::after {
+            content: '☰';
+            position: relative;
+            font-size: 2rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #FDB913;
+        }
+
+        .nav-arrow {
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('utpl.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 5rem;
+            box-sizing: border-box;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: transparent;
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: none;
+            margin-right: 3rem;
+        }
+
+        .hero-number {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #FDB913;
+            line-height: 1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 1.8rem;
+            color: white;
+            margin: 0;
+            line-height: 1.3;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            font-weight: bold;
+        }
+
+        .hero-text .highlight {
+            color: #FDB913;
+            font-weight: bold;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-text .emphasis {
+            font-weight: bold;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+        }
+
+        /* Secciones */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        .section-title {
+            color: #003D6D;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 4px;
+            background: #FDB913;
+        }
+
+        .section-description {
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 900px;
+        }
+
+        /* Enrollment Section */
+        .enrollment-section {
+            background: #f8f9fa;
+        }
+
+        .enrollment-content {
+            text-align: center;
+        }
+
+        .enrollment-title {
+            font-size: 2rem;
+            color: #003D6D;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .enrollment-title strong {
+            font-weight: 400;
+        }
+
+        .enrollment-highlight {
+            color: #FDB913;
+            font-weight: bold;
+        }
+
+        .level-selector {
+            margin: 2rem 0;
+        }
+
+        .level-label {
+            color: #003D6D;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .level-dropdown {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: 2px solid #003D6D;
+            border-radius: 5px;
+            background: white;
+            color: #003D6D;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            min-height: 250px;
+        }
+
+        .student-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .student-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+        }
+
+        /* Why UTPL Section */
+        .why-utpl-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .why-text h3 {
+            color: #003D6D;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-text h3 .highlight {
+            color: #FDB913;
+        }
+
+        .experience-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h4 {
+            color: #003D6D;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-link {
+            color: #003D6D;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .card-link:hover {
+            color: #FDB913;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            color: #003D6D;
+            text-align: center;
+            padding: 5rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: none;
+            margin: 0;
+        }
+
+        .cta-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .cta-main {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #003D6D;
+        }
+
+        .cta-highlight {
+            color: #FDB913;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            color: #003D6D;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 5rem;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-option {
+            text-align: center;
+            min-width: 280px;
+        }
+
+        .cta-option h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #003D6D;
+            font-weight: 600;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: #003D6D;
+            border: 3px solid #FDB913;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .cta-btn:hover {
+            background: #FDB913;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(253, 185, 19, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #003D6D;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+        }
+
+        .footer-contact {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: background 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #FDB913;
+            color: #003D6D;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ESTILOS DEL CHATBOT BOTPRESS ===== */
+        
+        /* Contenedor principal del chatbot */
+        div[id*="bp-"],
+        div[class*="bp-"],
+        div[id*="webchat"],
+        div[class*="webchat"],
+        div[id*="fab-root"] {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            width: 380px !important;
+            height: 600px !important;
+            max-width: 380px !important;
+            max-height: 600px !important;
+            z-index: 9999 !important;
+        }
+
+        /* Iframes del chatbot */
+        iframe[title*="chat" i],
+        iframe[title*="botpress" i],
+        iframe[src*="botpress"],
+        iframe[src*="webchat"] {
+            width: 380px !important;
+            height: 600px !important;
+            max-width: 380px !important;
+            max-height: 600px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 5px 40px rgba(0,0,0,0.16) !important;
+        }
+
+        /* Botón flotante del chatbot */
+        button[aria-label*="chat" i],
+        button[aria-label*="bot" i],
+        button[id*="bp-"],
+        button[class*="bp-"] {
+            width: 60px !important;
+            height: 60px !important;
+            min-width: 60px !important;
+            min-height: 60px !important;
+            max-width: 60px !important;
+            max-height: 60px !important;
+            border-radius: 50% !important;
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 9999 !important;
+        }
+
+        /* Para pantallas móviles */
+        @media (max-width: 768px) {
+            div[id*="bp-"],
+            div[class*="bp-"],
+            iframe[title*="chat" i],
+            iframe[src*="botpress"] {
+                width: calc(100vw - 40px) !important;
+                height: calc(100vh - 120px) !important;
+                max-width: calc(100vw - 40px) !important;
+                max-height: calc(100vh - 120px) !important;
+                bottom: 10px !important;
+                right: 20px !important;
+                left: 20px !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .students-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-badge {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .hero-number {
+                font-size: 4rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .why-utpl-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .students-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-main {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+                <span>UTPL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#oferta">Oferta académica</a></li>
+                <li><a href="#matriculate">Matricúlate ahora</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#">Soy UTPL <span class="nav-arrow">→</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-text">
+                    <h1>
+                        Somos la MEJOR<br>
+                        <span class="highlight">UNIVERSIDAD EN</span><br>
+                        <span class="highlight">EDUCACIÓN EN LÍNEA</span><br>
+                        <span class="emphasis">EN ECUADOR</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section class="enrollment-section" id="matriculate">
+        <div class="enrollment-content">
+            <h2 class="enrollment-title">
+                Descubre una <strong>experiencia universitaria innovadora</strong> y<br>
+                alcanza tus <strong>metas académicas con nosotros</strong>, en el<br>
+                momento y lugar que prefieras.
+            </h2>
+            <h3 style="color: #003D6D; font-size: 2rem; margin-bottom: 1rem;">
+                ¡Matrículas abiertas!
+            </h3>
+            <div class="level-selector">
+                <div class="level-label">Nivel de formación</div>
+                <select class="level-dropdown">
+                    <option>Selecciona...</option>
+                    <option>Pregrado</option>
+                    <option>Posgrado</option>
+                    <option>Formación Continua</option>
+                </select>
+            </div>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="img1.webp" alt="Estudiante 1">
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="img2.webp" alt="Estudiante 2">
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="img3.webp" alt="Estudiante 3">
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="img4.webp" alt="Estudiante 4">
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="img5.webp" alt="Estudiante 5">
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-image">
+                        <img src="edes.9451f590c3fd50356330.jpg" alt="Estudiante 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why UTPL Section -->
+    <section id="oferta">
+        <div class="why-utpl-content">
+            <div class="why-text">
+                <h3>
+                    ¿Por qué estudiar<br>
+                    <span class="highlight">en la UTPL?</span>
+                </h3>
+                <p class="experience-text">
+                    Nuestros <strong>más de 54 años de experiencia en formación universitaria</strong> y más de 42 mil estudiantes matriculados de grado, posgrado, tecnologías y formación permanente avalan nuestra calidad académica y excelencia educativa.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="info-card">
+                    <div class="card-image">
+                        <img src="54809751549_6bcf3314b3_o.jpg" alt="Becas UTPL">
+                    </div>
+                    <div class="card-content">
+                        <h4>Becas que construyen futuro</h4>
+                        <p>Los tres mejores puntajes en la prueba de admisión UTPL recibieron becas del 100% para toda su carrera, gracias a la alianza con Hidalgo & Hidalgo. Un impulso para que jóvenes talentos cumplan sus sueños y contribuyan al progreso del Ecuador.</p>
+                        <a href="#" class="card-link">Más información →</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-image">
+                        <img src="cooperacion.png" alt="UTPL conecta">
+                    </div>
+                    <div class="card-content">
+                        <h4>UTPL conecta a Loja con el mundo</h4>
+                        <p>Durante la Conferencia Mundial de la IASP en China, la UTPL consolidó alianzas con España, China y Arabia Saudita, fortaleciendo el emprendimiento y proyectando a Loja como referente global de innovación y desarrollo sostenible.</p>
+                        <a href="#" class="card-link">Más información →</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-image">
+                        <img src="fernanda_moncada.jpeg" alt="Campeona Mundial">
+                    </div>
+                    <div class="card-content">
+                        <h4>Campeona mundial y orgullo UTPL</h4>
+                        <p>Fernanda Moncada, estudiante de Administración de Empresas en modalidad en línea, se consagró Campeona Mundial de Patinaje de Velocidad en China. Su triunfo refleja disciplina, pasión y el talento que pone en alto a Loja y al Ecuador.</p>
+                        <a href="#" class="card-link">Más información →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <p class="cta-title">¡Únete a la UTPL y</p>
+        <h2 class="cta-main"><span class="cta-highlight">decide ser más</span></h2>
+        <p class="cta-subtitle">en la universidad <strong>más innovadora del Ecuador!</strong></p>
+        
+        <div class="cta-buttons">
+            <div class="cta-option">
+                <h3>Ya te decidiste</h3>
+                <a href="#" class="cta-btn">Oferta académica →</a>
+            </div>
+            <div class="cta-option">
+                <h3>Más información</h3>
+                <a href="#" class="cta-btn">Escríbenos →</a>
+            </div>
+            <div class="cta-option">
+                <h3>Más motivación</h3>
+                <a href="#" class="cta-btn">Historias de éxito →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">UTPL</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8;">La Universidad Católica de Loja</p>
+            </div>
+            
+            <div class="footer-contact">
+                <strong>Conecta con nosotros:</strong> 
+                <a href="tel:18008875 88">1800 88 75 88</a> - 
+                <a href="tel:(07)3701444">(07) 370 1444</a> - 
+                <a href="mailto:informacion@utpl.edu.ec">informacion@utpl.edu.ec</a>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-icon">💬</a>
+                <a href="#" class="social-icon">📱</a>
+                <a href="#" class="social-icon">f</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🎵</a>
+                <a href="#" class="social-icon">𝕏</a>
+                <a href="#" class="social-icon">📺</a>
+                <a href="#" class="social-icon">▶️</a>
+                <a href="#" class="social-icon">in</a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Política de privacidad</a>
+                <span style="opacity: 0.5;">-</span>
+                <a href="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Botpress -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.4/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/11/22/01/20251122011049-IYAFZLHW.js"></script>
+    
+    <!-- Script de configuración del chatbot - VERSIÓN ULTRA AGRESIVA -->
+    <script>
+        console.log('🚀 INICIANDO CONFIGURACIÓN ULTRA AGRESIVA DE BOTPRESS');
+        
+        // Función ULTRA AGRESIVA
+        function forzarTamanoChatbot() {
+            // Buscar TODOS los elementos posibles
+            const todosDivs = document.querySelectorAll('div');
+            const todosIframes = document.querySelectorAll('iframe');
+            const todosBotones = document.querySelectorAll('button');
+            
+            let encontrados = 0;
+            
+            // Revisar TODOS los divs
+            todosDivs.forEach(div => {
+                const id = div.id || '';
+                const className = div.className || '';
+                const style = div.getAttribute('style') || '';
+                
+                // Si parece ser de Botpress
+                if (id.includes('bp') || id.includes('webchat') || id.includes('fab') ||
+                    className.includes('bp') || className.includes('webchat') || 
+                    style.includes('botpress') || style.includes('webchat')) {
+                    
+                    div.style.setProperty('width', '380px', 'important');
+                    div.style.setProperty('height', '600px', 'important');
+                    div.style.setProperty('max-width', '380px', 'important');
+                    div.style.setProperty('max-height', '600px', 'important');
+                    div.style.setProperty('position', 'fixed', 'important');
+                    div.style.setProperty('bottom', '20px', 'important');
+                    div.style.setProperty('right', '20px', 'important');
+                    div.style.setProperty('z-index', '9999', 'important');
+                    encontrados++;
+                    console.log('✅ Div forzado:', id || className);
+                }
+            });
+            
+            // Revisar TODOS los iframes
+            todosIframes.forEach(iframe => {
+                const src = iframe.src || '';
+                const title = iframe.title || '';
+                
+                // Si NO es de YouTube, Vimeo o Maps, asumir que es el chatbot
+                if (!src.includes('youtube') && !src.includes('vimeo') && !src.includes('maps')) {
+                    iframe.style.setProperty('width', '380px', 'important');
+                    iframe.style.setProperty('height', '600px', 'important');
+                    iframe.style.setProperty('max-width', '380px', 'important');
+                    iframe.style.setProperty('max-height', '600px', 'important');
+                    iframe.style.setProperty('border-radius', '12px', 'important');
+                    
+                    // Forzar también en el padre
+                    if (iframe.parentElement) {
+                        iframe.parentElement.style.setProperty('width', '380px', 'important');
+                        iframe.parentElement.style.setProperty('height', '600px', 'important');
+                        iframe.parentElement.style.setProperty('max-width', '380px', 'important');
+                        iframe.parentElement.style.setProperty('max-height', '600px', 'important');
+                    }
+                    
+                    // Y en el abuelo también
+                    if (iframe.parentElement && iframe.parentElement.parentElement) {
+                        iframe.parentElement.parentElement.style.setProperty('width', '380px', 'important');
+                        iframe.parentElement.parentElement.style.setProperty('height', '600px', 'important');
+                    }
+                    
+                    encontrados++;
+                    console.log('✅ Iframe forzado:', src.substring(0, 50) || title);
+                }
+            });
+            
+            // Revisar TODOS los botones
+            todosBotones.forEach(btn => {
+                const ariaLabel = (btn.getAttribute('aria-label') || '').toLowerCase();
+                const id = btn.id || '';
+                
+                if (ariaLabel.includes('chat') || ariaLabel.includes('bot') || 
+                    id.includes('bp') || id.includes('fab')) {
+                    
+                    btn.style.setProperty('width', '60px', 'important');
+                    btn.style.setProperty('height', '60px', 'important');
+                    btn.style.setProperty('min-width', '60px', 'important');
+                    btn.style.setProperty('min-height', '60px', 'important');
+                    btn.style.setProperty('border-radius', '50%', 'important');
+                    encontrados++;
+                    console.log('✅ Botón forzado');
+                }
+            });
+            
+            if (encontrados > 0) {
+                console.log(`🎯 TOTAL DE ELEMENTOS FORZADOS: ${encontrados}`);
+            }
+        }
+        
+        // Ejecutar INMEDIATAMENTE
+        forzarTamanoChatbot();
+        
+        // Ejecutar cada 100ms durante los primeros 20 segundos
+        let contador = 0;
+        const intervaloAgresivo = setInterval(() => {
+            forzarTamanoChatbot();
+            contador++;
+            if (contador >= 200) { // 200 veces = 20 segundos
+                clearInterval(intervaloAgresivo);
+                console.log('🏁 Ejecución agresiva completada');
+            }
+        }, 100);
+        
+        // Ejecutar en todos los eventos posibles
+        document.addEventListener('DOMContentLoaded', forzarTamanoChatbot);
+        window.addEventListener('load', forzarTamanoChatbot);
+        document.addEventListener('click', forzarTamanoChatbot);
+        document.addEventListener('mousemove', forzarTamanoChatbot);
+        document.addEventListener('scroll', forzarTamanoChatbot);
+        
+        // Observador de mutaciones PERMANENTE
+        const observador = new MutationObserver(() => {
+            forzarTamanoChatbot();
+        });
+        
+        observador.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'class', 'id']
+        });
+        
+        console.log('👁️ OBSERVADOR PERMANENTE ACTIVADO');
+    </script>
+    
+    <!-- Script para smooth scroll -->
+    <script>
+        // Smooth scroll para los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

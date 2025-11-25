@@ -1,0 +1,20 @@
+/* Archivo: custom-botpress.css */
+#bp-widget-web {
+  width: 350px !important;
+  height: 500px !important;
+}
+
+#bp-widget-web iframe {
+  width: 350px !important;
+  height: 500px !important;
+}
+
+.bpw-widget-btn {
+  width: 55px !important;
+  height: 55px !important;
+}
+
+.bpw-widget-container {
+  max-width: 350px !important;
+  max-height: 500px !important;
+}
